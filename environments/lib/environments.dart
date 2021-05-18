@@ -1,0 +1,1 @@
+enum Environments { dev, production }
