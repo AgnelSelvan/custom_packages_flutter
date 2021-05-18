@@ -84,3 +84,39 @@ class CustomTextButton extends StatelessWidget {
         ));
   }
 }
+
+class CustomTextButtonIcon extends StatelessWidget {
+  final IconData icon;
+  final Color? backgoundColor;
+  final Color? textColor;
+  final double? fontSize;
+  final String label;
+
+  final VoidCallback? onPressed;
+  const CustomTextButtonIcon(
+    this.icon,
+    this.label, {
+    Key? key,
+    this.backgoundColor,
+    this.textColor,
+    this.fontSize,
+    this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton.icon(
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(backgoundColor)),
+        onPressed: onPressed,
+        icon: Icon(
+          icon,
+          color: Colors.white,
+        ),
+        label: CustomText(
+          label,
+          color: textColor,
+          size: fontSize,
+        ));
+  }
+}
