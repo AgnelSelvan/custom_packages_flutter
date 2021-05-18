@@ -55,3 +55,32 @@ class CustomIcon extends StatelessWidget {
     );
   }
 }
+
+class CustomTextButton extends StatelessWidget {
+  final Color? backgoundColor;
+  final Color? textColor;
+  final double? fontSize;
+  final String label;
+
+  final VoidCallback? onPressed;
+  const CustomTextButton(this.label,
+      {Key? key,
+      this.backgoundColor,
+      this.fontSize,
+      this.onPressed,
+      this.textColor})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(backgoundColor)),
+        onPressed: onPressed,
+        child: CustomText(
+          label,
+          color: textColor,
+          size: fontSize,
+        ));
+  }
+}
