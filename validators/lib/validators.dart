@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 String validateStringData(dynamic data) =>
@@ -22,8 +23,50 @@ DateTime validateDateTime(String data) {
 
 validateBoolData(bool data) => data == null ? false : true;
 
+/**
+ * Function returns Todays Date
+ */
+DateTime getTodaysDate() {
+  return DateTime.now();
+}
+
+/**
+ * Function returns Formatted DateTime based on the DateTime you provide
+ */
 String getFormattedDateTime(DateTime dateTime) => dateTime == null
     ? ""
     : DateFormat(
-            "${dateTime.day}/${dateTime.month}/${dateTime.year} ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}")
+            "${dateTime.day.toString().padLeft(2, '0')}/${dateTime.month.toString().padLeft(2, '0')}/${dateTime.year} ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}")
         .format(dateTime);
+
+/** 
+ * Function returns Formatted Date based on the Date you provide
+*/
+String getFormattedDate(DateTime dateTime, {String syntaxBetweenDates = "/"}) =>
+    dateTime == null
+        ? ""
+        : DateFormat(
+                "${dateTime.day.toString().padLeft(2, '0')}${syntaxBetweenDates}${dateTime.month.toString().padLeft(2, '0')}${syntaxBetweenDates}${dateTime.year}")
+            .format(dateTime);
+
+/** 
+ * Function returns Formatted Todays Date based on the Date you provide
+*/
+String getFormattedTodaysDate({String syntaxBetweenDates = "/"}) {
+  DateTime dateTime = getTodaysDate();
+  return dateTime == null
+      ? ""
+      : DateFormat(
+              "${dateTime.day.toString().padLeft(2, '0')} ${syntaxBetweenDates} ${dateTime.month.toString().padLeft(2, '0')} ${syntaxBetweenDates} ${dateTime.year}")
+          .format(dateTime);
+}
+
+Future<DateTime> showDatePickerDialog(BuildContext context,
+    {DateTime initialDate}) async {
+  DateTime dateTime = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: getTodaysDate(),
+      lastDate: getTodaysDate().add(Duration(days: 365)));
+  return dateTime;
+}

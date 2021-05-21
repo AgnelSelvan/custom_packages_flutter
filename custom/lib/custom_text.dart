@@ -73,8 +73,16 @@ class CustomTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+      BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width,
+          maxHeight: MediaQuery.of(context).size.height),
+    );
     return TextButton(
         style: ButtonStyle(
+            padding: MaterialStateProperty.all(EdgeInsets.symmetric(
+                vertical: ScreenUtil().setHeight(10),
+                horizontal: ScreenUtil().setWidth(6))),
             backgroundColor: MaterialStateProperty.all(backgoundColor)),
         onPressed: onPressed,
         child: CustomText(
