@@ -14,7 +14,7 @@ DateTime validateDateTime(String data) {
   try {
     return data == null || data == "null" || data == ""
         ? DateTime.now()
-        : DateTime.tryParse(data);
+        : DateTime.tryParse(data)!;
   } catch (e) {
     //print(e.toString());
     return DateTime.now();
@@ -62,11 +62,11 @@ String getFormattedTodaysDate({String syntaxBetweenDates = "/"}) {
 }
 
 Future<DateTime> showDatePickerDialog(BuildContext context,
-    {DateTime initialDate}) async {
-  DateTime dateTime = await showDatePicker(
+    {DateTime? initialDate}) async {
+  DateTime? dateTime = await showDatePicker(
       context: context,
-      initialDate: initialDate,
+      initialDate: initialDate ?? DateTime.now(),
       firstDate: getTodaysDate(),
       lastDate: getTodaysDate().add(Duration(days: 365)));
-  return dateTime;
+  return dateTime!;
 }

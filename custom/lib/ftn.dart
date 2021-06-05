@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './custom_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CustomUtilies {
   static void navigateReplacement(BuildContext context, String routes,
@@ -45,6 +46,16 @@ class CustomUtilies {
         backgroundColor: Colors.red[400],
         colorText: Colors.white,
         duration: Duration(seconds: seconds ?? 2));
+  }
+
+  static Future<bool> launchUrl(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+      return true;
+    } else {
+      // throw 'Could not launch $url';
+      return false;
+    }
   }
 
   static void actionSnackBar(
