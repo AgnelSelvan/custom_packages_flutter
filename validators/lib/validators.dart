@@ -49,6 +49,10 @@ String getFormattedDate(DateTime dateTime, {String syntaxBetweenDates = "/"}) =>
                 "${dateTime.day.toString().padLeft(2, '0')}${syntaxBetweenDates}${dateTime.month.toString().padLeft(2, '0')}${syntaxBetweenDates}${dateTime.year}")
             .format(dateTime);
 
+String getFormattedTime(TimeOfDay timeOfDay) {
+  return "${timeOfDay.hour.toString().padLeft(2, '0')}:${timeOfDay.minute.toString().padLeft(2, '0')}";
+}
+
 /** 
  * Function returns Formatted Todays Date based on the Date you provide
 */
