@@ -119,7 +119,7 @@ class CustomTextButtonIcon extends StatelessWidget {
         onPressed: onPressed,
         icon: Icon(
           icon,
-          color: Colors.white,
+          color: textColor,
         ),
         label: CustomText(
           label,
