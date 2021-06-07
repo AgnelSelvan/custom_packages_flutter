@@ -70,3 +70,12 @@ Future<DateTime> showDatePickerDialog(BuildContext context,
       lastDate: getTodaysDate().add(Duration(days: 365)));
   return dateTime!;
 }
+
+Future<TimeOfDay?> showTimePickerDialog(BuildContext context,
+    {TimeOfDay? initialTime}) async {
+  TimeOfDay? dateTime = await showTimePicker(
+    context: context,
+    initialTime: initialTime ?? TimeOfDay.now(),
+  );
+  return dateTime;
+}
