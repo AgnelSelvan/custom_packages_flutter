@@ -4,11 +4,25 @@ import 'package:intl/intl.dart';
 String validateStringData(dynamic data) =>
     data.toString() == "null" || data.toString() == null ? "" : data.toString();
 
-int validateIntData(String data) =>
-    data == "" || data == "null" || data == null ? 0 : int.parse(data);
+int validateIntData(String data) {
+  try {
+    return data == "" || data == "null" || data == null ? 0 : int.parse(data);
+  } catch (e) {
+    debugPrint("Error in Int : $e");
+    return 0;
+  }
+}
 
-double validateDoubleData(String data) =>
-    data == "" || data == "null" || data == null ? 0 : double.parse(data);
+double validateDoubleData(String data) {
+  try {
+    return data == "" || data == "null" || data == null
+        ? 0
+        : double.parse(data);
+  } catch (e) {
+    debugPrint("Error in Double : $e");
+    return 0;
+  }
+}
 
 DateTime validateDateTime(String data) {
   try {
@@ -21,7 +35,8 @@ DateTime validateDateTime(String data) {
   }
 }
 
-validateBoolData(bool data) => data == null ? false : true;
+// ignore: unnecessary_null_comparison
+bool validateBoolData(bool data) => data == null ? false : data;
 
 /**
  * Function returns Todays Date
@@ -33,6 +48,7 @@ DateTime getTodaysDate() {
 /**
  * Function returns Formatted DateTime based on the DateTime you provide
  */
+// ignore: unnecessary_null_comparison
 String getFormattedDateTime(DateTime dateTime) => dateTime == null
     ? ""
     : DateFormat(
@@ -43,6 +59,7 @@ String getFormattedDateTime(DateTime dateTime) => dateTime == null
  * Function returns Formatted Date based on the Date you provide
 */
 String getFormattedDate(DateTime dateTime, {String syntaxBetweenDates = "/"}) =>
+    // ignore: unnecessary_null_comparison
     dateTime == null
         ? ""
         : DateFormat(
@@ -58,6 +75,7 @@ String getFormattedTime(TimeOfDay timeOfDay) {
 */
 String getFormattedTodaysDate({String syntaxBetweenDates = "/"}) {
   DateTime dateTime = getTodaysDate();
+  // ignore: unnecessary_null_comparison
   return dateTime == null
       ? ""
       : DateFormat(
@@ -65,14 +83,14 @@ String getFormattedTodaysDate({String syntaxBetweenDates = "/"}) {
           .format(dateTime);
 }
 
-Future<DateTime> showDatePickerDialog(BuildContext context,
-    {DateTime? initialDate}) async {
+Future<DateTime?> showDatePickerDialog(BuildContext context,
+    {DateTime? initialDate, DateTime? firstDate}) async {
   DateTime? dateTime = await showDatePicker(
       context: context,
       initialDate: initialDate ?? DateTime.now(),
-      firstDate: getTodaysDate(),
+      firstDate: firstDate ?? getTodaysDate(),
       lastDate: getTodaysDate().add(Duration(days: 365)));
-  return dateTime!;
+  return dateTime;
 }
 
 Future<TimeOfDay?> showTimePickerDialog(BuildContext context,
