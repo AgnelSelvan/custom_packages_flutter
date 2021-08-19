@@ -14,6 +14,16 @@ class CustomUtilies {
     Navigator.pushNamed(context, routes, arguments: arguments);
   }
 
+  static void navigatePageReplacement(BuildContext context, Widget widget) {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => widget));
+  }
+
+  static void navigatePage(BuildContext context, Widget widget) {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => widget));
+  }
+
   static void customSnackBar(String text, Color backgroundColor,
       Color textColor, String content, Icon icon,
       {int? seconds}) {

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -85,11 +86,11 @@ class CustomTextButton extends StatelessWidget {
                 horizontal: ScreenUtil().setWidth(6))),
             backgroundColor: MaterialStateProperty.all(backgoundColor)),
         onPressed: onPressed,
-        child: CustomText(
-          label,
-          color: textColor,
-          size: fontSize,
-        ));
+        child: Text(label,
+            style: TextStyle(
+              color: textColor,
+              fontSize: fontSize,
+            )));
   }
 }
 
@@ -115,16 +116,18 @@ class CustomTextButtonIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton.icon(
         style: ButtonStyle(
+            padding: MaterialStateProperty.all(
+                EdgeInsets.symmetric(vertical: 15, horizontal: 25)),
             backgroundColor: MaterialStateProperty.all(backgoundColor)),
         onPressed: onPressed,
         icon: Icon(
           icon,
           color: textColor,
         ),
-        label: CustomText(
-          label,
-          color: textColor,
-          size: fontSize,
-        ));
+        label: Text(label,
+            style: TextStyle(
+              color: textColor,
+              fontSize: fontSize,
+            )));
   }
 }

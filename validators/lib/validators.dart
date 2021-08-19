@@ -70,6 +70,10 @@ String getFormattedTime(TimeOfDay timeOfDay) {
   return "${timeOfDay.hour.toString().padLeft(2, '0')}:${timeOfDay.minute.toString().padLeft(2, '0')}";
 }
 
+String getDDMMMMYYYY(DateTime dateTime, {String syntaxBetweenDates = "/"}) {
+  return DateFormat.yMMMEd().format(dateTime);
+}
+
 /** 
  * Function returns Formatted Todays Date based on the Date you provide
 */
