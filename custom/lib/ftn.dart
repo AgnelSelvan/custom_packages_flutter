@@ -29,6 +29,7 @@ class CustomUtilies {
       {int? seconds}) {
     Get.snackbar(text, content,
         icon: icon,
+        snackPosition: SnackPosition.BOTTOM,
         backgroundColor: backgroundColor,
         colorText: textColor,
         duration: Duration(seconds: seconds ?? 2));
@@ -41,6 +42,7 @@ class CustomUtilies {
           Icons.check_circle_outline,
           color: Colors.white,
         ),
+        snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green[400],
         colorText: Colors.white,
         duration: Duration(seconds: seconds ?? 2));
@@ -53,6 +55,7 @@ class CustomUtilies {
           Icons.cancel,
           color: Colors.white,
         ),
+        snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red[400],
         colorText: Colors.white,
         duration: Duration(seconds: seconds ?? 2));
