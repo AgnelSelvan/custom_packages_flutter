@@ -88,12 +88,12 @@ String getFormattedTodaysDate({String syntaxBetweenDates = "/"}) {
 }
 
 Future<DateTime?> showDatePickerDialog(BuildContext context,
-    {DateTime? initialDate, DateTime? firstDate}) async {
+    {DateTime? initialDate, DateTime? firstDate, DateTime? lastDate}) async {
   DateTime? dateTime = await showDatePicker(
       context: context,
       initialDate: initialDate ?? DateTime.now(),
       firstDate: firstDate ?? getTodaysDate(),
-      lastDate: getTodaysDate().add(Duration(days: 365)));
+      lastDate: lastDate ?? getTodaysDate().add(Duration(days: 365)));
   return dateTime;
 }
 
