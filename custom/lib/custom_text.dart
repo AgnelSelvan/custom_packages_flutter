@@ -23,7 +23,7 @@ class CustomText extends StatelessWidget {
       text,
       style: TextStyle(
           color: color,
-          fontSize: ScreenUtil().setSp(size ?? 12),
+          fontSize: size ?? 12,
           fontWeight: fontWeight,
           letterSpacing: letterSpacing),
     );
