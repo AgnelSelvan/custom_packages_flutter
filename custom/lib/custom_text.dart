@@ -52,7 +52,7 @@ class CustomIcon extends StatelessWidget {
       icon,
       color: color,
       semanticLabel: "Add",
-      size: ScreenUtil().setSp(size ?? 16),
+      size: size ?? 16,
     );
   }
 }
@@ -81,9 +81,8 @@ class CustomTextButton extends StatelessWidget {
     );
     return TextButton(
         style: ButtonStyle(
-            padding: MaterialStateProperty.all(EdgeInsets.symmetric(
-                vertical: ScreenUtil().setHeight(10),
-                horizontal: ScreenUtil().setWidth(6))),
+            padding: MaterialStateProperty.all(
+                EdgeInsets.symmetric(vertical: 10, horizontal: 6)),
             backgroundColor: MaterialStateProperty.all(backgoundColor)),
         onPressed: onPressed,
         child: Text(label,
