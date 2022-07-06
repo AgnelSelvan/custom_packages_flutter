@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,9 +14,7 @@ class CustomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
-      BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width,
-          maxHeight: MediaQuery.of(context).size.height),
+      context,
     );
     return Text(
       text,
@@ -44,9 +41,7 @@ class CustomIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
-      BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width,
-          maxHeight: MediaQuery.of(context).size.height),
+      context,
     );
     return Icon(
       icon,
@@ -75,9 +70,7 @@ class CustomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
-      BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width,
-          maxHeight: MediaQuery.of(context).size.height),
+      context,
     );
     return TextButton(
         style: ButtonStyle(
